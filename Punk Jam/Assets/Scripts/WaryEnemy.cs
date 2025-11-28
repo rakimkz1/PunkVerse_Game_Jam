@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class WaryEnemy : MonoBehaviour, IAttackTarget
@@ -16,6 +15,7 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     public Transform playerPosition;
     public bool isAttackPreparing;
     public bool isAttacking;
+    public bool isIdel;
     public float attackRange;
     private int currentWay;
     private int currentDiraction = 1;
@@ -48,11 +48,12 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
 
     private void BeatTact()
     {
-        Debug.Log("beat");
         if (isAttackPreparing && !isAttacking)
             PreparintToAttack();
         else if (isAttacking)
             Attack();
+        else if (isIdel)
+            IdelTime();
         else
             Move();
     }
@@ -61,7 +62,6 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     {
         if (isAttacking)
             return;
-        Debug.Log("Move");
         float time = 0f;
         if (currentWay == 0 || currentWay == wayPoints.Length - 1)
             currentDiraction *= -1;
@@ -78,6 +78,10 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     {
         isAttacking = true;
     }
+    private void IdelTime()
+    {
+        isIdel = false;
+    }
 
     private void Attack()
     {
@@ -85,9 +89,9 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
         {
             playerPosition.GetComponent<PlayerHealthManager>().TakeDamage(Damage);
         }
-        Debug.Log("attack");
         isAttacking = false;
         isAttackPreparing = false;
+        isIdel = true;
     }
 
     private void OnDrawGizmos()
