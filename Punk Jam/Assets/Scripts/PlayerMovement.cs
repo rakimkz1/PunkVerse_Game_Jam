@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform bodyView;
     private Rigidbody _rb;
     private TactMachine _tackMachine;
+    private PlayerZip _playerZip;
     private float _nowDashingTime;
     private bool _isDashing;
 
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _tackMachine = GetComponent<TactMachine>();
+        _playerZip = GetComponent<PlayerZip>();
     }
 
     public void Update()
@@ -43,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             _nowDashingTime += Time.deltaTime;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && _tackMachine.IsBeatTact())
+        if(Input.GetKeyDown(KeyCode.Space) && !_playerZip.isZiping &&  _tackMachine.IsBeatTact())
         {
             Debug.Log("Dash");
             StartDash();
@@ -60,18 +62,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (_isDashing)
+        if (_isDashing || _playerZip.isZiping)
             return;
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
+        float gravity = _rb.velocity.y;
         Vector3 diraction = cameraControl.diractionX * y + cameraControl.diractionY * x;
 
         _rb.velocity = diraction.normalized * speed;
+        _rb.velocity += Vector3.up * gravity;
     }
 
     private void BodyRotate()
     {
+        if (_playerZip.isZiping)
+            return;
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector3 diraction = -cameraControl.diractionX * x + cameraControl.diractionY * y;

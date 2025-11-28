@@ -9,15 +9,17 @@ public class PlayerAttack : MonoBehaviour
     public float damage;
 
     private TactMachine _tactMachine;
+    private PlayerZip playerZip;
 
     private void Awake()
     {
         _tactMachine = GetComponent<TactMachine>();
+        playerZip = GetComponent<PlayerZip>();
     }
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _tactMachine.IsBeatTact())
+        if (Input.GetMouseButtonDown(0) && !playerZip.isZiping && _tactMachine.IsBeatTact())
         {
             SearchAttackTarget();
         }
