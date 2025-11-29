@@ -3,7 +3,37 @@ guid: 545036b4fbef6cb4b8f8414dea8a7ec4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: fdf326271316d7e4fba189c264164d20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No_Move
+    second: {fileID: 2100000, guid: d2961bd12cc2c484b8295723281bb814, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rad_Material
+    second: {fileID: 2100000, guid: 8d9436b1613315e4cbd1f268bce0752a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rad_Material.001
+    second: {fileID: 2100000, guid: 8d9436b1613315e4cbd1f268bce0752a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UNKNOWN_GEAR_5__0
+    second: {fileID: 2100000, guid: e638aec0c61f7f8459344dd354bcc381, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ziffern
+    second: {fileID: 2100000, guid: a6eb40f541a2a694683def06ddb24463, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

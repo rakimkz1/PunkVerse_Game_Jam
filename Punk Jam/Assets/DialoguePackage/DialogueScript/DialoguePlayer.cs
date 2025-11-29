@@ -12,15 +12,19 @@ namespace DialogueSystem
 		[SerializeField] private Sprite[] sprites;
 
 		[Header("UI")]
+		[SerializeField] private GameObject panel;
 		[SerializeField] private TMP_Text speakerText;
 		[SerializeField] private TMP_Text messageText;
 		[SerializeField] private RectTransform[] choicesContainer;
 		[SerializeField] private GameObject choiceButtonPrefab; // prefab with ChoiceButton + Button + TMP_Text
+		[SerializeField] private GameObject[] images;
 		[SerializeField] private Image avatar;
 		[SerializeField] private Image upAvatar;
 
 		[Header("Settings")]
 		[SerializeField] private float charsPerSecond = 60f; // дл€ эффекта печати, 0 = мгновенно
+		[SerializeField] private PlayerMovement pm;
+		[SerializeField] private CameraControl cc;
 
 		private DialogueNode currentNode;
 
@@ -32,7 +36,7 @@ namespace DialogueSystem
 				return;
 			}
 
-			StartDialogue(dialogueAsset.StartNode);
+			//StartDialogue(dialogueAsset.StartNode);
 		}
 
 		public void StartDialogue(DialogueNode start)
@@ -43,6 +47,9 @@ namespace DialogueSystem
 				return;
 			}
 
+			panel.SetActive(true);
+			pm.isMovable = false;
+			cc.isLookable = false;
 			currentNode = start;
 			ShowNode(currentNode);
 		}
@@ -87,16 +94,19 @@ namespace DialogueSystem
 						{
 							avatar.sprite = sprites[int.Parse(node.Id) + 1];
 							upAvatar.sprite = sprites[6];
+							images[1].SetActive(true);
 						}
 						else
 						{
 							avatar.sprite = sprites[int.Parse(node.Id) + 1];
 						}
+						images[0].SetActive(true);
 
 					}
 					else if (node.first <= i)
 					{
 						avatar.sprite = sprites[int.Parse(node.Id)];
+						images[0].SetActive(true);
 					}
 
 					if (charsPerSecond <= 0f)
@@ -171,6 +181,12 @@ namespace DialogueSystem
 			ClearChoices();
 			if (speakerText != null) speakerText.text = "";
 			if (messageText != null) messageText.text = "";
+			images[0].SetActive(false);
+			images[1].SetActive(false);
+
+			panel.SetActive(false);
+			pm.isMovable = true;
+			cc.isLookable = true;
 			// если нужно Ч отправить событие, выключить UI и т.д.
 			Debug.Log("Dialogue ended.");
 		}
