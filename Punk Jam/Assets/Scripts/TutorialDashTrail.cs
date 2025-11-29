@@ -27,9 +27,7 @@ public class TutorialDashTrail : MonoBehaviour
 
         if(inRow == 5)
         {
-            TutorialManager.Instance.TutorialStages++;
-            TutorialManager.Instance.currentPoint++;
-            TutorialManager.Instance.Move(TutorialManager.Instance.wayPoints[TutorialManager.Instance.currentPoint].position);
+            TutorialManager.Instance.AddStage();
             body.gameObject.SetActive(false);
         }
     }

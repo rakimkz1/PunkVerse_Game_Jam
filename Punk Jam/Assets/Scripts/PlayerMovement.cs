@@ -35,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
             isMoveable = true;
         };
         OnStopMoving += () =>
-        {
+        { 
+            _rb.velocity = Vector3.zero;
             isMoveable = false;
         };
     }

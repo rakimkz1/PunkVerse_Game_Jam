@@ -41,7 +41,7 @@ public class TutorialManager : MonoBehaviour
         {
             Move(wayPoints[0].position);
         }
-        if(TutorialStages == 3)
+        if(TutorialStages == 4)
         {
             Move(wayPoints[1].position);
         }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a63dd0ba4d0bcb4795049a21bcc8193, type: 3}
   m_Name: Tutorial1Node
   m_EditorClassIdentifier: 
-  id: tutorial
+  id: tutorial1
   messages:
   - speakerName: "\u0413\u0438\u0434"
     content: "\u041E\u0443! \u0423 \u043D\u0430\u0441 \u0433\u043E\u0441\u0442\u044C.

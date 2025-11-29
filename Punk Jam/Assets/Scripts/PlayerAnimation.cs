@@ -4,6 +4,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     public bool isMoving;
     public bool isZiping;
+    [SerializeField] private PlayerMovement movement;
     private Animator animator;
     public int maxAttack;
     public float attackcComboColdown;
@@ -14,6 +15,11 @@ public class PlayerAnimation : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        movement.OnStopMoving += () =>
+        {
+            isMoving = false;
+            isZiping = false;
+        };
     }
     public void DashAnim()
     {

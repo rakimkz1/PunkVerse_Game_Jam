@@ -15,7 +15,7 @@ public class AttackTrail : MonoBehaviour, IAttackTarget
 
     private void Update()
     {
-        if (TutorialManager.Instance.TutorialStages != 3)
+        if (TutorialManager.Instance.TutorialStages != 5)
             return;
         body.gameObject.SetActive(true);
 
@@ -31,9 +31,7 @@ public class AttackTrail : MonoBehaviour, IAttackTarget
 
         if(inRow == 4)
         {
-            TutorialManager.Instance.TutorialStages++;
-            TutorialManager.Instance.currentPoint++;
-            TutorialManager.Instance.Move(TutorialManager.Instance.wayPoints[TutorialManager.Instance.currentPoint].position);
+            TutorialManager.Instance.AddStage();
             body.SetActive(false);
         }
     }

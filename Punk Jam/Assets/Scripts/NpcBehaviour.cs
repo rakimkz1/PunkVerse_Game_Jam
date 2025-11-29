@@ -15,11 +15,14 @@ public class NpcBehaviour : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			if (dialogueAsset != null && dialoguePlayer != null && count <dialogueAsset.Length)
+			if (dialogueAsset != null && dialoguePlayer != null && count < dialogueAsset.Length && TutorialManager.Instance == null)
 			{
 				dialoguePlayer.StartDialogue(dialogueAsset[count++].StartNode);
-				
 			}
+			else if(dialogueAsset != null && dialoguePlayer != null && count < dialogueAsset.Length && TutorialManager.Instance.TutorialStages != 2 && TutorialManager.Instance.TutorialStages != 5)
+			{
+                dialoguePlayer.StartDialogue(dialogueAsset[count++].StartNode);
+            }
 		}
 	}
 
