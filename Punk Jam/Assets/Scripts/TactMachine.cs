@@ -13,7 +13,7 @@ public class TactMachine : MonoBehaviour
     [SerializeField] private AudioClip tactClip;
 
     private float _nowTact = 0f;
-    private bool isBeatable;
+    private bool isBeatable = true;
 
     public void Update()
     {
@@ -33,7 +33,6 @@ public class TactMachine : MonoBehaviour
 
         if (answer > difficalty && isBeatable)
             FailColdown();
-
         return (answer < difficalty) && isBeatable;
     }
 

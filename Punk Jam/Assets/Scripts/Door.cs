@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool isKeyFound;
+    public GameObject keyView;
+    public float keyRotateTime;
+    public float KeyRotateSpeed;
+
+    public void StartTrail()
     {
-        
+        keyView.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RotateKey()
     {
-        
+        float time = 0f;
+        Vector3 initialRot = keyView.transform.localEulerAngles;
+
+        while (time < keyRotateTime)
+        {
+            initialRot += Vector3.up * KeyRotateSpeed * Time.deltaTime;
+            keyView.transform.rotation = Quaternion.Euler(initialRot);
+            time += Time.deltaTime;
+        }
+    }
+
+    public void OpenTheDoor()
+    {
+
     }
 }

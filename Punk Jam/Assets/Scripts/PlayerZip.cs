@@ -12,6 +12,7 @@ public class PlayerZip : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E) && other.gameObject.GetComponents<ZipWays>() != null)
         {
+            Debug.Log(other.gameObject.name);
             ZipAttach(other.gameObject.GetComponent<ZipWays>());
         }
     }
