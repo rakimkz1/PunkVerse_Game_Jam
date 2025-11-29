@@ -14,11 +14,11 @@ public class Door : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-
     private void Update()
     {
-        if (isKeyFound && isPlayerEnterInTriger && Input.GetKeyDown(KeyCode.E))
+        if (isKeyFound && isPlayerEnterInTriger)
         {
+            Debug.Log("openedDoor");
             anim.SetTrigger("open");
         }
     }
@@ -40,6 +40,7 @@ public class Door : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
         if(isOpen && collision.gameObject.tag == "Player")
         {
             MoveToNextScene();

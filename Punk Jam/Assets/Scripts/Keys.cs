@@ -8,7 +8,7 @@ public class Keys : MonoBehaviour
     private void Start()
     {
         transform.DOMoveY(transform.position.y + 1f, 1f).SetLoops(-1, LoopType.Yoyo);
-        transform.DORotate(new Vector3(0f, 180f, 90f), 2f).SetLoops(-1, LoopType.Yoyo);
+        transform.DORotate(new Vector3(0f, 720f, 90f), 1f).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void OnTriggerEnter(Collider other)

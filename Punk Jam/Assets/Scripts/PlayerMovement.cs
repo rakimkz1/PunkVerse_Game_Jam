@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public AnimationCurve dashCurve;
 
+    public bool isMovable;
+
     [SerializeField] private CameraControl cameraControl;
     [SerializeField] private Transform bodyView;
     [SerializeField] private PlayerAnimation anim;
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
+        if (!isMovable)
+            return;
         if (_isDashing)
         {
             float x = Input.GetAxis("Horizontal");
@@ -64,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (_isDashing || _playerZip.isZiping)
+        if (_isDashing || _playerZip.isZiping || !isMovable)
             return;
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -77,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         else
             anim.isMoving = false;
 
-        _rb.velocity = diraction.normalized * speed;
+        _rb.velocity = Vector3.ClampMagnitude(diraction, 1f) * speed;
         _rb.velocity += Vector3.up * gravity;
     }
 

@@ -5,10 +5,13 @@ public class CameraControl : MonoBehaviour
     public float mouseSentivity;
     public Vector3 diractionX;
     public Vector3 diractionY;
+    public bool isLookable;
 
     private Vector3 cameraRotation;
     private void Update()
     {
+        if (!isLookable)
+            return;
         float x = Input.GetAxis("Mouse X");
         float y = Input.GetAxis("Mouse Y");
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -15,7 +14,6 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     public Transform playerPosition;
     public bool isAttackPreparing;
     public bool isAttacking;
-    public bool isIdel;
     public float attackRange;
     private int currentWay;
     private int currentDiraction = 1;
@@ -54,8 +52,6 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
             PreparintToAttack();
         else if (isAttacking)
             Attack();
-        else if (isIdel)
-            IdelTime();
         else
             Move();
     }
@@ -81,12 +77,6 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
         isAttacking = true;
         animator.SetTrigger("prepaire");
     }
-    private void IdelTime()
-    {
-        animator.SetTrigger("idel");
-        isIdel = false;
-    }
-
     private void Attack()
     {
         if(Vector3.Distance(playerPosition.position, transform.position) < attackRange)
@@ -96,7 +86,6 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
         isAttacking = false;
         isAttackPreparing = false;
         animator.SetTrigger("attack");
-        isIdel = true;
     }
 
     private void OnDrawGizmos()
