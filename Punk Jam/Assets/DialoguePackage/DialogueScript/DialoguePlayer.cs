@@ -86,7 +86,23 @@ namespace DialogueSystem
 				if (speakerText != null) speakerText.text = msg.SpeakerName;
 				if (messageText != null)
 				{
-					if (node.second <= i)
+
+					if (node.Id == "tutorial1")
+					{
+						avatar.sprite = sprites[7];
+						images[0].SetActive(true);
+					}
+					else if (node.Id == "tutorial2")
+					{
+						avatar.sprite = sprites[8];
+						images[0].SetActive(true);
+					}
+					else if (node.Id == "tutorial3")
+					{
+						avatar.sprite = sprites[9];
+						images[0].SetActive(true);
+					}
+					else if (node.second <= i)
 					{
 						if (node.Id == "3")
 						{
