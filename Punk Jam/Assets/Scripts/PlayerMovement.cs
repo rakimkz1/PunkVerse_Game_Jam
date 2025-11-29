@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private TactMachine _tackMachine;
     private PlayerZip _playerZip;
     private float _nowDashingTime;
-    private bool isMoveable;
+    private bool isMoveable = true;
     private bool _isDashing;
 
     private void Start()
