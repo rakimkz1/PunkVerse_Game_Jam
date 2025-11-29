@@ -24,7 +24,6 @@ namespace DialogueSystem
 		[Header("Settings")]
 		[SerializeField] private float charsPerSecond = 60f; // дл€ эффекта печати, 0 = мгновенно
 		[SerializeField] private PlayerMovement pm;
-		[SerializeField] private CameraControl cc;
 
 		private DialogueNode currentNode;
 
@@ -49,6 +48,7 @@ namespace DialogueSystem
 
 			panel.SetActive(true);
 			currentNode = start;
+			pm.OnStopMoving.Invoke();
 			ShowNode(currentNode);
 		}
 
@@ -181,7 +181,7 @@ namespace DialogueSystem
 			if (messageText != null) messageText.text = "";
 			images[0].SetActive(false);
 			images[1].SetActive(false);
-
+			pm.OnStartMoving.Invoke();
 			panel.SetActive(false);
 			// если нужно Ч отправить событие, выключить UI и т.д.
 			Debug.Log("Dialogue ended.");

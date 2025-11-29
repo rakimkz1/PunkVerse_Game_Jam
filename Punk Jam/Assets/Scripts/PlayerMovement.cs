@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public AnimationCurve dashCurve;
 
-    public event Action OnStopMoving;
-    public event Action OnStartMoving;
+    public Action OnStopMoving;
+    public Action OnStartMoving;
 
     [SerializeField] private CameraControl cameraControl;
     public Transform bodyView;
