@@ -48,8 +48,6 @@ namespace DialogueSystem
 			}
 
 			panel.SetActive(true);
-			pm.isMovable = false;
-			cc.isLookable = false;
 			currentNode = start;
 			ShowNode(currentNode);
 		}
@@ -185,8 +183,6 @@ namespace DialogueSystem
 			images[1].SetActive(false);
 
 			panel.SetActive(false);
-			pm.isMovable = true;
-			cc.isLookable = true;
 			// если нужно Ч отправить событие, выключить UI и т.д.
 			Debug.Log("Dialogue ended.");
 		}

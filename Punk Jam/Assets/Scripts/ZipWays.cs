@@ -6,6 +6,7 @@ public class ZipWays : MonoBehaviour
     public float t;
     private SplineContainer _spline;
     public float maxLength;
+    public Transform startPoint;
     private BoxCollider[] boxColliders;
 
     private void Start()

@@ -13,7 +13,7 @@ public class TactMachine : MonoBehaviour
     [SerializeField] private AudioClip tactClip;
 
     private float _nowTact = 0f;
-    private bool isBeatable = true;
+    public bool isBeatable = true;
 
     public void Update()
     {

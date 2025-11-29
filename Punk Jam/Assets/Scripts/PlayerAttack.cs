@@ -9,6 +9,8 @@ public class PlayerAttack : MonoBehaviour
     public float damage;
 
     [SerializeField] private PlayerAnimation anim;
+    [SerializeField] private AudioClip misAttackSound;
+    [SerializeField] private AudioClip attackSound;
     private TactMachine _tactMachine;
     private PlayerZip playerZip;
     private PlayerMovement playerMovement;
@@ -31,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !playerZip.isZiping && _tactMachine.IsBeatTact() && !isAttackable)
+        if (Input.GetMouseButtonDown(0) && !playerZip.isZiping && _tactMachine.IsBeatTact() && isAttackable)
         {
             SearchAttackTarget();
         }
@@ -46,10 +48,13 @@ public class PlayerAttack : MonoBehaviour
             if (hits[i].gameObject.GetComponent<IAttackTarget>() != null)
             {
                 anim.Attack();
+                AudioManager.instance.PlayAudioOneShot(attackSound, 1f);
                 AttackTarget(hits[i].gameObject);
                 return;
             }
         }
+        anim.Attack();
+        AudioManager.instance.PlayAudioOneShot(misAttackSound, 1f);
     }
 
     private async Task AttackTarget(GameObject target)

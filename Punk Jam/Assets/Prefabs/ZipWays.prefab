@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &560142063475574171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8445899760103568703}
+  m_Layer: 0
+  m_Name: Start Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8445899760103568703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560142063475574171}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.28, y: 0, z: -3.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8723003580699557027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4771892378735222034
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,9 +62,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.31, y: 1.36, z: 10.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.26461, y: 0.26461, z: 0.26461}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 8445899760103568703}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4749706293530774807
@@ -71,99 +103,39 @@ MonoBehaviour:
       TangentIn:
         x: -0
         y: -0
-        z: -1.7034874
+        z: -7.0502543
       TangentOut:
         x: 0
         y: 0
-        z: 1.7034874
+        z: 7.0502543
       Rotation:
         value:
-          x: 0.020746136
-          y: 0.85215235
-          z: 0.52019304
-          w: -0.052963905
+          x: 0.0000088283205
+          y: 0.7040976
+          z: 0.71010315
+          w: 0.000007272505
     - Position:
-        x: -1.1700001
-        y: 15.14
-        z: -7.7200003
+        x: 0.0016059875
+        y: 70.5
+        z: 0.5987854
       TangentIn:
-        x: 0
-        y: 0
-        z: -6.889676
+        x: -0
+        y: -0
+        z: -7.0502543
       TangentOut:
         x: 0
         y: 0
-        z: 6.889676
+        z: 7.0502543
       Rotation:
         value:
-          x: -0.000000037159058
-          y: 0.91869104
-          z: 0.000000015975967
-          w: -0.39497706
-    - Position:
-        x: -45.710003
-        y: 13.04
-        z: -4.98
-      TangentIn:
-        x: 0
-        y: 0
-        z: -15.54776
-      TangentOut:
-        x: 0
-        y: 0
-        z: 15.54776
-      Rotation:
-        value:
-          x: -0.00000006188888
-          y: 0.81212777
-          z: 0.00000004446457
-          w: -0.5834797
-    - Position:
-        x: -16.41
-        y: 13.04
-        z: -35.38
-      TangentIn:
-        x: 0
-        y: 0
-        z: -15.838247
-      TangentOut:
-        x: 0
-        y: 0
-        z: 15.838247
-      Rotation:
-        value:
-          x: -1.0033576e-10
-          y: 0.73124963
-          z: -9.359326e-11
-          w: 0.68210995
-    - Position:
-        x: 16.42
-        y: 29.13
-        z: -15.54
-      TangentIn:
-        x: 0
-        y: 0
-        z: -4.9690623
-      TangentOut:
-        x: 0
-        y: 0
-        z: 4.9690623
-      Rotation:
-        value:
-          x: 0.18534811
-          y: 0.72756016
-          z: -0.6525765
-          w: 0.10220647
+          x: 0.00000882827
+          y: 0.7040976
+          z: 0.71010315
+          w: 0.0000072725556
     m_MetaData:
     - Mode: 0
       Tension: 0.5
-    - Mode: 2
-      Tension: 0.5
-    - Mode: 2
-      Tension: 0.5
-    - Mode: 2
-      Tension: 0.5
-    - Mode: 2
+    - Mode: 0
       Tension: 0.5
     m_Closed: 0
     m_IntData:
@@ -209,7 +181,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 7, y: 7, z: 7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &2033801093001373768
 BoxCollider:
@@ -230,7 +202,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 7, y: 7, z: 7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7585003937677197316
 MonoBehaviour:
@@ -247,7 +219,7 @@ MonoBehaviour:
   m_Container: {fileID: 4749706293530774807}
   m_ItemsToInstantiate:
   - prefab: {fileID: 0}
-    Prefab: {fileID: 919132149155446097, guid: 2f3769c751ccd92459d113100e22a0bd, type: 3}
+    Prefab: {fileID: 2128921310486786920, guid: 21fdb29220afa9c409a243326f176707, type: 3}
     probability: 0
     Probability: 0
   m_Method: 1
@@ -273,7 +245,7 @@ MonoBehaviour:
     space: 0
   m_ScaleOffset:
     setup: 1
-    min: {x: -76.55, y: 67.6, z: 47.4}
+    min: {x: -26.95, y: 1, z: -140.58}
     max: {x: 9.79, y: 67.6, z: 149}
     randomX: 0
     randomY: 0
