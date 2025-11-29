@@ -91,6 +91,7 @@ namespace DialogueSystem
 					{
 						avatar.sprite = sprites[7];
 						images[0].SetActive(true);
+
 					}
 					else if (node.Id == "tutorial2")
 					{
@@ -99,20 +100,10 @@ namespace DialogueSystem
 					}
 					else if (node.Id == "tutorial3")
 					{
-						avatar.sprite = sprites[9]	;
+						avatar.sprite = sprites[9];
 						images[0].SetActive(true);
 					}
-					else if (node.Id == "tutorial4")
-					{
-						avatar.sprite = sprites[7];
-						images[0].SetActive(true);
-					}
-                    else if (node.Id == "tutorial5")
-                    {
-                        avatar.sprite = sprites[7];
-                        images[0].SetActive(true);
-                    }
-                    else if (node.second <= i)
+					else if (node.second <= i)
 					{
 						if (node.Id == "3")
 						{
