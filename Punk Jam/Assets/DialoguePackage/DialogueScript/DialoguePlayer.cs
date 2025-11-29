@@ -182,6 +182,10 @@ namespace DialogueSystem
 			images[0].SetActive(false);
 			images[1].SetActive(false);
 			pm.OnStartMoving.Invoke();
+			if (TutorialManager.Instance != null)
+			{
+				TutorialManager.Instance.AddStage();
+			}
 			panel.SetActive(false);
 			// если нужно Ч отправить событие, выключить UI и т.д.
 			Debug.Log("Dialogue ended.");
