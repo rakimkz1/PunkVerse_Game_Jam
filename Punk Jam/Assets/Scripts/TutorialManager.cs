@@ -37,7 +37,14 @@ public class TutorialManager : MonoBehaviour
     public void AddStage()
     {
         TutorialStages++;
-        if(TutorialStages == 1) { }
+        if(TutorialStages == 1)
+        {
+            Move(wayPoints[0].position);
+        }
+        if(TutorialStages == 3)
+        {
+            Move(wayPoints[1].position);
+        }
     }
 
     public void Move(Vector3 to)
