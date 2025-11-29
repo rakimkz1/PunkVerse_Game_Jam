@@ -9,6 +9,12 @@ public class PlayerZip : MonoBehaviour
     [SerializeField] private Transform zipingPoint;
     [SerializeField] private PlayerAnimation anim;
     private float _nowLength;
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     private void OnTriggerStay(Collider other)
     {
         if(Input.GetKeyDown(KeyCode.E) && other.gameObject.GetComponent<ZipWays>() != null)
@@ -20,6 +26,7 @@ public class PlayerZip : MonoBehaviour
     private async Task ZipAttach(ZipWays zipWay)
     {
         isZiping = true;
+        rb.isKinematic = true;
         anim.isZiping = true;
         while(zipWay.maxLength > _nowLength)
         {
@@ -28,7 +35,9 @@ public class PlayerZip : MonoBehaviour
             Debug.DrawRay(zipWay.GetPosiotionInWay(_nowLength), Vector3.up);
             _nowLength += zipSpeed * Time.deltaTime;
         }
+        _nowLength = 0f;
         anim.isZiping = false;
+        rb.isKinematic = false;
         isZiping = false;
     }
 }    

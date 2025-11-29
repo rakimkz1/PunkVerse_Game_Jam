@@ -10,7 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public AnimationCurve dashCurve;
 
-    public bool isMovable;
+    public event Action OnStopMoving;
+    public event Action OnStartMoving;
+    
 
     [SerializeField] private CameraControl cameraControl;
     [SerializeField] private Transform bodyView;
@@ -19,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private TactMachine _tackMachine;
     private PlayerZip _playerZip;
     private float _nowDashingTime;
+    private bool isMoveable;
     private bool _isDashing;
 
     private void Start()
@@ -26,6 +29,14 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _tackMachine = GetComponent<TactMachine>();
         _playerZip = GetComponent<PlayerZip>();
+        OnStartMoving += () =>
+        {
+            isMoveable = true;
+        };
+        OnStopMoving += () =>
+        {
+            isMoveable = false;
+        };
     }
 
     public void Update()
@@ -37,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
-        if (!isMovable)
+        if (!isMoveable)
             return;
         if (_isDashing)
         {
@@ -68,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (_isDashing || _playerZip.isZiping || !isMovable)
+        if (_isDashing || _playerZip.isZiping || !isMoveable)
             return;
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -87,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void BodyRotate()
     {
-        if (_playerZip.isZiping)
+        if (_playerZip.isZiping || !isMoveable)
             return;
 
         float x = Input.GetAxis("Horizontal");

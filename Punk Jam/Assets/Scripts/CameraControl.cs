@@ -5,9 +5,24 @@ public class CameraControl : MonoBehaviour
     public float mouseSentivity;
     public Vector3 diractionX;
     public Vector3 diractionY;
-    public bool isLookable;
+    public PlayerMovement player;
 
     private Vector3 cameraRotation;
+    private bool isLookable = true;
+
+
+    private void Start()
+    {
+        player.OnStartMoving += () =>
+        {
+            isLookable = true;
+        };
+        player.OnStopMoving += () =>
+        {
+            isLookable = false;
+        };
+    }
+
     private void Update()
     {
         if (!isLookable)
