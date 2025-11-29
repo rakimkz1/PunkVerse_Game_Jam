@@ -11,6 +11,8 @@ namespace DialogueSystem
 		public string SpeakerName => speakerName;
 		public string Content => content;
 
+		public int spriteId;
+
 		public DialogueMessage() { }
 
 		public DialogueMessage(string speaker, string content)
