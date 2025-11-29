@@ -40,7 +40,6 @@ public class Door : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if(isOpen && collision.gameObject.tag == "Player")
         {
             MoveToNextScene();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -11,12 +12,13 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     public AnimationCurve movingCurve;
 
     public Transform[] wayPoints;
-    public Transform playerPosition;
-    public bool isAttackPreparing;
-    public bool isAttacking;
+    public float rotateSpeed;
     public float attackRange;
+    public float prepairingRange;
     private int currentWay;
     private int currentDiraction = 1;
+    private bool isPrepered;
+    private Transform playerPosition;
     private Animator animator;
     public void Attacked(float damage)
     {
@@ -26,16 +28,10 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     private void Start()
     {
         animator = GetComponent<Animator>();
+        playerPosition = GameObject.FindWithTag("Player").transform;
         StartCoroutine(StartTact());
     }
 
-    private void Update()
-    {
-        if(Vector3.Distance(playerPosition.position, transform.position) < attackRange)
-        {
-            isAttackPreparing = true;
-        }
-    }
 
     IEnumerator StartTact()
     {
@@ -48,44 +44,58 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
 
     private void BeatTact()
     {
-        if (isAttackPreparing && !isAttacking)
-            PreparintToAttack();
-        else if (isAttacking)
-            Attack();
+        if (Vector3.Distance(transform.position, playerPosition.position) < prepairingRange)
+        {
+            PrepareAttack();
+        }
+        else if (isPrepered)
+        {
+            AttackPlayer();
+        }
         else
             Move();
     }
 
+    private void AttackPlayer()
+    {
+        animator.SetTrigger("attack");
+        animator.SetBool("idel", false);
+        isPrepered = false;
+
+        if(Vector3.Distance(transform.position, playerPosition.position) < attackRange)
+        {
+            PlayerHealthManager health = playerPosition.GetComponent<PlayerHealthManager>();
+            health.TakeDamage(Damage);
+        }
+    }
+
+    private void PrepareAttack()
+    {
+        animator.SetTrigger("prepaire");
+        animator.SetBool("idel", false);
+        isPrepered = true;
+    }
+
     private async Task Move()
     {
-        if (isAttacking)
-            return;
         float time = 0f;
+        animator.SetBool("idel", true);
         if (currentWay == 0 || currentWay == wayPoints.Length - 1)
             currentDiraction *= -1;
         while(time < movingTime)
         {
             transform.position = Vector3.Lerp(wayPoints[currentWay].position, wayPoints[currentWay + currentDiraction].position, movingCurve.Evaluate(time / movingTime));
+            RotateBody();
             time += Time.deltaTime;
             await Task.Yield();
         }
         currentWay += currentDiraction;
     }
 
-    private void PreparintToAttack()
+    private void RotateBody()
     {
-        isAttacking = true;
-        animator.SetTrigger("prepaire");
-    }
-    private void Attack()
-    {
-        if(Vector3.Distance(playerPosition.position, transform.position) < attackRange)
-        {
-            playerPosition.GetComponent<PlayerHealthManager>().TakeDamage(Damage);
-        }
-        isAttacking = false;
-        isAttackPreparing = false;
-        animator.SetTrigger("attack");
+        Quaternion rot = Quaternion.LookRotation(wayPoints[currentWay + currentDiraction].position - wayPoints[currentWay].position, wayPoints[currentWay + currentDiraction].up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotateSpeed);
     }
 
     private void OnDrawGizmos()

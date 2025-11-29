@@ -326,6 +326,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d2961bd12cc2c484b8295723281bb814, type: 2}
+    - target: {fileID: 2016271055692164890, guid: 545036b4fbef6cb4b8f8414dea8a7ec4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 98dd4b8c18364cd4dbf8cdecae524ef0, type: 2}
     - target: {fileID: 2596154147856529795, guid: 545036b4fbef6cb4b8f8414dea8a7ec4, type: 3}
       propertyPath: m_LocalScale.z
       value: 179.08835
@@ -1042,7 +1046,7 @@ PrefabInstance:
     - target: {fileID: -2245623774801616189, guid: c2bab1adbe056214e9e83747c4fafc4e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 521adee4cc0dcdf4d866c8f4ffbe8f64, type: 2}
+      objectReference: {fileID: 2100000, guid: 86766d44cfddc6b4bb6d824cae8a4d77, type: 2}
     - target: {fileID: 919132149155446097, guid: c2bab1adbe056214e9e83747c4fafc4e, type: 3}
       propertyPath: m_Name
       value: Room (1)
@@ -2420,7 +2424,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 20
-      minScalar: 30
+      minScalar: 57.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2473,7 +2477,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 90
-      minScalar: 92.58
+      minScalar: 149.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2578,7 +2582,7 @@ ParticleSystem:
     startRotationX:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.17680186
+      scalar: -0.4956735
       minScalar: 0.7407177
       maxCurve:
         serializedVersion: 2
@@ -2631,7 +2635,7 @@ ParticleSystem:
     startRotationY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.1415927
+      scalar: 4.022984
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2684,7 +2688,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.27628562
+      scalar: 0.4550073
       minScalar: 0.37559485
       maxCurve:
         serializedVersion: 2
@@ -2739,7 +2743,7 @@ ParticleSystem:
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
-    rotation3D: 0
+    rotation3D: 1
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
@@ -6896,13 +6900,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884646101}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 689.3822, y: 188.1, z: -262.4}
-  m_LocalScale: {x: 1, y: 1, z: 1.6585}
+  m_LocalRotation: {x: 0.05054558, y: 0.70529795, z: 0.70529795, w: -0.05054558}
+  m_LocalPosition: {x: 632.2, y: 205.2, z: -262.4}
+  m_LocalScale: {x: 0.51183, y: 3.0786617, z: 0.70222545}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 188.198}
 --- !u!224 &1909506594 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6087784304266301613, guid: e31645a321d893c4d81fab11889c8b81, type: 3}
