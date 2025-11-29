@@ -9,12 +9,15 @@ namespace DialogueSystem
 	{
 		[Header("Data")]
 		[SerializeField] private DialogueAsset dialogueAsset;
+		[SerializeField] private Sprite[] sprites;
 
 		[Header("UI")]
 		[SerializeField] private TMP_Text speakerText;
 		[SerializeField] private TMP_Text messageText;
 		[SerializeField] private RectTransform[] choicesContainer;
 		[SerializeField] private GameObject choiceButtonPrefab; // prefab with ChoiceButton + Button + TMP_Text
+		[SerializeField] private Image avatar;
+		[SerializeField] private Image upAvatar;
 
 		[Header("Settings")]
 		[SerializeField] private float charsPerSecond = 60f; // для эффекта печати, 0 = мгновенно
@@ -72,11 +75,30 @@ namespace DialogueSystem
 
 		private IEnumerator PlayMessages(DialogueNode node)
 		{
-			foreach (var msg in node.Messages)
+			for (int i = 0; i < node.Messages.Count; i++)
 			{
+				var msg = node.Messages[i];
 				if (speakerText != null) speakerText.text = msg.SpeakerName;
 				if (messageText != null)
 				{
+					if (node.second <= i)
+					{
+						if (node.Id == "3")
+						{
+							avatar.sprite = sprites[int.Parse(node.Id) + 1];
+							upAvatar.sprite = sprites[6];
+						}
+						else
+						{
+							avatar.sprite = sprites[int.Parse(node.Id) + 1];
+						}
+
+					}
+					else if (node.first <= i)
+					{
+						avatar.sprite = sprites[int.Parse(node.Id)];
+					}
+
 					if (charsPerSecond <= 0f)
 					{
 						messageText.text = msg.Content;
@@ -85,9 +107,9 @@ namespace DialogueSystem
 					{
 						messageText.text = "";
 						float delay = 1f / charsPerSecond;
-						for (int i = 0; i < msg.Content.Length; i++)
+						for (int j = 0; j < msg.Content.Length; j++)
 						{
-							messageText.text += msg.Content[i];
+							messageText.text += msg.Content[j];
 							yield return new WaitForSeconds(delay);
 						}
 					}

@@ -9,6 +9,7 @@ namespace DialogueSystem
 		[SerializeField] private string id;
 		[SerializeField] private List<DialogueMessage> messages = new List<DialogueMessage>();
 		[SerializeField] private List<DialogueChoice> choices = new List<DialogueChoice>();
+		public int first, second;
 
 		// »нкапсул€ци€: только getters наружу
 		public string Id => id;

@@ -8,7 +8,6 @@ namespace DialogueSystem
 		[SerializeField] private DialogueNode startNode;
 		public DialogueNode StartNode => startNode;
 
-		// helper to validate in editor if you want (optional)
 		public bool IsValid() => startNode != null;
 	}
 }
