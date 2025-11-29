@@ -1,33 +1,58 @@
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
     public bool isKeyFound;
-    public GameObject keyView;
-    public float keyRotateTime;
-    public float KeyRotateSpeed;
+    public int sceneNumber;
+    public bool isOpen;
+    private Animator anim;
+    public bool isPlayerEnterInTriger;
 
-    public void StartTrail()
+    private void Start()
     {
-        keyView.SetActive(true);
+        anim = GetComponent<Animator>();
     }
 
-    public void RotateKey()
-    {
-        float time = 0f;
-        Vector3 initialRot = keyView.transform.localEulerAngles;
 
-        while (time < keyRotateTime)
+    private void Update()
+    {
+        if (isKeyFound && isPlayerEnterInTriger && Input.GetKeyDown(KeyCode.E))
         {
-            initialRot += Vector3.up * KeyRotateSpeed * Time.deltaTime;
-            keyView.transform.rotation = Quaternion.Euler(initialRot);
-            time += Time.deltaTime;
+            anim.SetTrigger("open");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            isPlayerEnterInTriger = true;
         }
     }
 
-    public void OpenTheDoor()
+    private void OnTriggerExit(Collider other)
     {
+        if(other.gameObject.tag == "Player")
+        {
+            isPlayerEnterInTriger = false;
+        }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(isOpen && collision.gameObject.tag == "Player")
+        {
+            MoveToNextScene();
+        }
+    }
+
+    public void OpenDoor()
+    {
+        isOpen = true;
+    }
+
+    private void MoveToNextScene()
+    {
+        SceneManager.LoadScene(sceneNumber);
     }
 }

@@ -11,9 +11,8 @@ public class PlayerZip : MonoBehaviour
     private float _nowLength;
     private void OnTriggerStay(Collider other)
     {
-        if(Input.GetKeyDown(KeyCode.E) && other.gameObject.GetComponents<ZipWays>() != null)
+        if(Input.GetKeyDown(KeyCode.E) && other.gameObject.GetComponent<ZipWays>() != null)
         {
-            Debug.Log(other.gameObject.name);
             ZipAttach(other.gameObject.GetComponent<ZipWays>());
         }
     }

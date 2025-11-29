@@ -19,6 +19,7 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     public float attackRange;
     private int currentWay;
     private int currentDiraction = 1;
+    private Animator animator;
     public void Attacked(float damage)
     {
 
@@ -26,6 +27,7 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         StartCoroutine(StartTact());
     }
 
@@ -77,9 +79,11 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     private void PreparintToAttack()
     {
         isAttacking = true;
+        animator.SetTrigger("prepaire");
     }
     private void IdelTime()
     {
+        animator.SetTrigger("idel");
         isIdel = false;
     }
 
@@ -91,6 +95,7 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
         }
         isAttacking = false;
         isAttackPreparing = false;
+        animator.SetTrigger("attack");
         isIdel = true;
     }
 
