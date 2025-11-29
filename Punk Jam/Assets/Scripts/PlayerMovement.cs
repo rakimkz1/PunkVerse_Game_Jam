@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private CameraControl cameraControl;
     [SerializeField] private Transform bodyView;
+    [SerializeField] private PlayerAnimation anim;
     private Rigidbody _rb;
     private TactMachine _tackMachine;
     private PlayerZip _playerZip;
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _isDashing = true;
         _nowDashingTime = 0f;
+        anim.DashAnim();
         await Task.Delay((int)(dashingTime * 1000f));
         _isDashing = false;
     }
@@ -69,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
 
         float gravity = _rb.velocity.y;
         Vector3 diraction = cameraControl.diractionX * y + cameraControl.diractionY * x;
+
+        if(x != 0f || y != 0f) 
+            anim.isMoving = true;
+        else
+            anim.isMoving = false;
 
         _rb.velocity = diraction.normalized * speed;
         _rb.velocity += Vector3.up * gravity;

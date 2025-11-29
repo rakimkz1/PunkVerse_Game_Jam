@@ -7,6 +7,7 @@ public class PlayerZip : MonoBehaviour
     public float zipSpeed;
     public bool isZiping;
     [SerializeField] private Transform zipingPoint;
+    [SerializeField] private PlayerAnimation anim;
     private float _nowLength;
     private void OnTriggerStay(Collider other)
     {
@@ -20,6 +21,7 @@ public class PlayerZip : MonoBehaviour
     private async Task ZipAttach(ZipWays zipWay)
     {
         isZiping = true;
+        anim.isZiping = true;
         while(zipWay.maxLength > _nowLength)
         {
             await Task.Yield();
@@ -27,6 +29,7 @@ public class PlayerZip : MonoBehaviour
             Debug.DrawRay(zipWay.GetPosiotionInWay(_nowLength), Vector3.up);
             _nowLength += zipSpeed * Time.deltaTime;
         }
+        anim.isZiping = false;
         isZiping = false;
     }
 }    

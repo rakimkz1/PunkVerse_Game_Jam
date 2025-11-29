@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public float moveingToTargetTime;
     public float damage;
 
+    [SerializeField] private PlayerAnimation anim;
     private TactMachine _tactMachine;
     private PlayerZip playerZip;
 
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (hits[i].gameObject.GetComponent<IAttackTarget>() != null)
             {
+                anim.Attack();
                 AttackTarget(hits[i].gameObject);
                 return;
             }
