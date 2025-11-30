@@ -166,8 +166,13 @@ MonoBehaviour:
   attackRange: 11.3
   aprochRange: 3.63
   moveingToTargetTime: 0.3
+<<<<<<< Updated upstream
   damage: 30
   impactForce: 20
+=======
+  damage: 100
+  impactForce: 0
+>>>>>>> Stashed changes
   anim: {fileID: 1435859046343412085}
   misAttackSound: {fileID: 8300000, guid: b6c2b6c5ec67d1a468fb5cf3e3afa30f, type: 3}
   attackSound: {fileID: 8300000, guid: 6a26b95ebda037348bd4f330b24dd9ff, type: 3}
