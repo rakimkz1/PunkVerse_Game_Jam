@@ -7,4 +7,11 @@ public class PrologyScene : MonoBehaviour
     {
         SceneManager.LoadScene(i);
     }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MoveToTheScene(1);
+        }
+    }
 }
