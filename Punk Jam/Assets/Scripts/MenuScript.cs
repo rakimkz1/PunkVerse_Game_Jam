@@ -1,3 +1,4 @@
+using DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -8,6 +9,8 @@ public class MenuScript : MonoBehaviour
 {
 	public float speed = 5f;
     public Transform initialPos, settingsPos, creditsPos;
+	public GameObject pause;
+	private PlayerMovement pm;
 
 
 	private Vector3 nextPos;
@@ -18,13 +21,26 @@ public class MenuScript : MonoBehaviour
 
 	private void Start()
 	{
-		transform.position = initialPos.position;
-		transform.eulerAngles = initialPos.eulerAngles;
+		if (initialPos != null)
+		{
+			transform.position = initialPos.position;
+			transform.eulerAngles = initialPos.eulerAngles;
+		}
+
+		if (TryGetComponent(out DialoguePlayer dp))
+		{
+			pm = dp.pm;
+		}
 	}
 
 	private void Update()
 	{
-		if (isPlaying)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+			pause.SetActive(true);
+			pm.OnStopMoving();
+        }
+        if (isPlaying)
 		{
 			transform.position = Vector3.Lerp(transform.position, nextPos, speed * Time.deltaTime);
 			rotation = Vector3.Lerp(rotation, nextRot, speed * Time.deltaTime);
@@ -63,6 +79,17 @@ public class MenuScript : MonoBehaviour
 	public void StartButton()
 	{
 		SceneManager.LoadScene(5);
+	}
+
+	public void Resume()
+	{
+		pause.SetActive(false);
+		pm.OnStopMoving();
+	}
+
+	public void Menu()
+	{
+		SceneManager.LoadScene(0);
 	}
 
 	public void Exit()

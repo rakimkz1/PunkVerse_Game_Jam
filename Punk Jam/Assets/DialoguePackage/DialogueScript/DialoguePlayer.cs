@@ -23,7 +23,7 @@ namespace DialogueSystem
 
 		[Header("Settings")]
 		[SerializeField] private float charsPerSecond = 60f; // для эффекта печати, 0 = мгновенно
-		[SerializeField] private PlayerMovement pm;
+		public PlayerMovement pm;
 
 		private DialogueNode currentNode;
 
