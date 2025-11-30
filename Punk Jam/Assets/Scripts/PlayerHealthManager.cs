@@ -26,7 +26,7 @@ public class PlayerHealthManager : MonoBehaviour
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
-        tip.transform.DOScale(1.4f, 0.5f).SetEase(tiptextCurve).From(1f).SetLoops(-1,LoopType.Yoyo);
+        //tip.transform.DOScale(1.4f, 0.5f).SetEase(tiptextCurve).From(1f).SetLoops(-1,LoopType.Yoyo);
     }
     public void TakeDamage(float damage)
     {
