@@ -26,6 +26,7 @@ public class FinalManager : MonoBehaviour
 	public void Repair()
 	{
 		choices.SetActive(false);
+
 	}
 
 	public void Death()
@@ -38,7 +39,7 @@ public class FinalManager : MonoBehaviour
 		StartCoroutine(GOMENU());
 	}
 
-	private IEnumerator GOMENU()
+	private IEnumerator GOMENU(float value = 20)
 	{
 		yield return new WaitForSeconds(20);
 		SceneManager.LoadScene(0);
