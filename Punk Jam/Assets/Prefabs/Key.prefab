@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 0}
+  pickSound: {fileID: 8300000, guid: c11852515784178449ac5ada52215882, type: 3}
 --- !u!65 &3407035679588877161
 BoxCollider:
   m_ObjectHideFlags: 0

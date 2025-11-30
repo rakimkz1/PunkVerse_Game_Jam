@@ -52,7 +52,7 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
 
     private void BeatTact()
     {
-        if (Vector3.Distance(transform.position, playerPosition.position) < prepairingRange)
+        if (Vector3.Distance(transform.position, playerPosition.position) < prepairingRange && isPrepered == false)
         {
             PrepareAttack();
         }
@@ -61,13 +61,15 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
             AttackPlayer();
         }
         else
+        {
             Move();
+        }
     }
 
     private void AttackPlayer()
     {
         animator.SetTrigger("attack");
-        animator.SetBool("idel", false);
+        animator.SetBool("idel", true);
         isPrepered = false;
 
         if(Vector3.Distance(transform.position, playerPosition.position) < attackRange)

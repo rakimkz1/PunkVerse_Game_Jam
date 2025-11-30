@@ -4,6 +4,7 @@ using UnityEngine;
 public class Keys : MonoBehaviour
 {
     public Door door;
+    [SerializeField] private AudioClip pickSound;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class Keys : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            AudioManager.instance.PlayAudioOneShot(pickSound, 1f);
             door.isKeyFound = true;
             gameObject.SetActive(false);
         }

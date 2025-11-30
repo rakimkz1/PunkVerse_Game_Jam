@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -12,16 +13,17 @@ public class SoundTrackManager : MonoBehaviour
     {
         Instance = this;
         soundTrack = GetComponent<AudioSource>();
-        PlaySoundTrack();
+        StartCoroutine(PlaySoundTracck());
     }
 
-    private async Task PlaySoundTrack()
+
+    IEnumerator PlaySoundTracck()
     {
         soundTrack.Stop();
-        await Task.Delay(offset);
+        yield return new WaitForSeconds((float)offset / 1000);
         soundTrack.Play();
-        await Task.Delay(276000);
-        PlaySoundTrack();
+        yield return new WaitForSeconds(276f);
+        StartCoroutine(PlaySoundTracck());
     }
 
     public void SetVolume(float volume)

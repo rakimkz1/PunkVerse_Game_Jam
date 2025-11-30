@@ -1,7 +1,6 @@
-using System;
+using DG.Tweening;
 using System.Threading.Tasks;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +12,11 @@ public class PlayerHealthManager : MonoBehaviour
     public float reancarnationDelay;
     public int rebeatNumberToAlive;
     [SerializeField] private AudioClip getHit;
+    [SerializeField] private Animator anim;
     [SerializeField] protected TactMachine tackMachine;
     [SerializeField] private TextMeshProUGUI tip;
+    [SerializeField] private GameObject DeathBar;
+    [SerializeField] private AnimationCurve tiptextCurve;
     private PlayerMovement movement;
     private int _nowBeatNumber;
     private bool _isBeatable;
@@ -22,6 +24,10 @@ public class PlayerHealthManager : MonoBehaviour
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
+        tackMachine.onTactBeat += () =>
+        {
+            tip.transform.DOScale(1.4f, 0.5f).SetEase(tiptextCurve);
+        };
     }
     public void TakeDamage(float damage)
     {
@@ -41,6 +47,8 @@ public class PlayerHealthManager : MonoBehaviour
     {
         movement.OnStopMoving?.Invoke();
         _nowBeatNumber = 0;
+        DeathBar.SetActive(true);
+        anim.SetTrigger("stun");
         StartReancarnationGame();
     }
 
@@ -59,6 +67,8 @@ public class PlayerHealthManager : MonoBehaviour
     private async Task Reancornate()
     {
         _isBeatable = false;
+        DeathBar.SetActive(false);
+        anim.SetTrigger("revive");
         await Task.Delay(2000);
         movement.OnStartMoving?.Invoke();
     }
