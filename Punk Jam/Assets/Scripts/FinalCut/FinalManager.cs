@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalManager : MonoBehaviour
 {
-    [SerializeField] private GameObject choices;
+	[SerializeField] private GameObject choices;
 	[SerializeField] private Transform waipaoint;
 	[SerializeField] private Animator animator;
 	[SerializeField] private PlayerMovement pm;
@@ -15,7 +16,7 @@ public class FinalManager : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			pm.OnStopMoving.Invoke() ;
+			pm.OnStopMoving.Invoke();
 			choices.SetActive(true);
 			Debug.Log("FINAL");
 			player = other.transform;
@@ -29,10 +30,17 @@ public class FinalManager : MonoBehaviour
 
 	public void Death()
 	{
-		choices.SetActive(false );
+		choices.SetActive(false);
 		Vector3 pos = waipaoint.position;
 		pos.y = player.position.y;
 		player.position = pos;
 		animator.SetTrigger("CutScene");
+		StartCoroutine(GOMENU());
+	}
+
+	private IEnumerator GOMENU()
+	{
+		yield return new WaitForSeconds(20);
+		SceneManager.LoadScene(0);
 	}
 }

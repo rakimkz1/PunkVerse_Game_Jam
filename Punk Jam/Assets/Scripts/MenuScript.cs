@@ -84,7 +84,7 @@ public class MenuScript : MonoBehaviour
 	public void Resume()
 	{
 		pause.SetActive(false);
-		pm.OnStopMoving();
+		pm.OnStartMoving();
 	}
 
 	public void Menu()
