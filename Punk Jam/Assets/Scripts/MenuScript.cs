@@ -62,7 +62,7 @@ public class MenuScript : MonoBehaviour
 
 	public void StartButton()
 	{
-		SceneManager.LoadScene(1);
+		SceneManager.LoadScene(5);
 	}
 
 	public void Exit()

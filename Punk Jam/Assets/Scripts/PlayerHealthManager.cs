@@ -26,7 +26,7 @@ public class PlayerHealthManager : MonoBehaviour
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
-        //tip.transform.DOScale(1.4f, 0.5f).SetEase(tiptextCurve).From(1f).SetLoops(-1,LoopType.Yoyo);
+        tip.transform.DOScale(1.4f, 0.5f).SetEase(tiptextCurve).From(1f).SetLoops(-1,LoopType.Yoyo);
     }
     public void TakeDamage(float damage)
     {
@@ -73,6 +73,8 @@ public class PlayerHealthManager : MonoBehaviour
         anim.SetTrigger("revive");
         await Task.Delay(2700);
         _isDead = false;
+        health = maxHealth;
+        ShowHealth();
         movement.OnStartMoving?.Invoke();
     }
 
