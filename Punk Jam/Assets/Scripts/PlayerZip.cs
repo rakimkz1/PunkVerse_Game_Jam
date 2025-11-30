@@ -10,18 +10,35 @@ public class PlayerZip : MonoBehaviour
     private float _nowLength;
     private Rigidbody rb;
     private PlayerMovement movement;
+    private bool isInZipWayZone;
+    private ZipWays wayInZone;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         movement = GetComponent<PlayerMovement>();
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(Input.GetKeyDown(KeyCode.E) && other.gameObject.GetComponent<ZipWays>() != null)
+        if (other.gameObject.GetComponent<ZipWays>() != null)
         {
-            ZipAttach(other.gameObject.GetComponent<ZipWays>());
+            isInZipWayZone = true;
+            wayInZone = other.gameObject.GetComponent<ZipWays>();
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.GetComponent<ZipWays>() != null)
+        {
+            isInZipWayZone = false;
+            wayInZone = null; ;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && isInZipWayZone)
+            ZipAttach(wayInZone);
     }
 
     private async Task ZipAttach(ZipWays zipWay)

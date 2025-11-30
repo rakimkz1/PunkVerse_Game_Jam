@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -7,6 +9,7 @@ public class ZipWays : MonoBehaviour
     private SplineContainer _spline;
     public float maxLength;
     public Transform startPoint;
+    [SerializeField] private Transform textPos;
     private BoxCollider[] boxColliders;
 
     private void Start()
@@ -21,5 +24,27 @@ public class ZipWays : MonoBehaviour
     public Vector3 GetPosiotionInWay(float length)
     {
         return _spline.EvaluatePosition(length / maxLength);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+            PlayerEnter();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+            ExitPlayer();
+    }
+
+    private void ExitPlayer()
+    {
+        textPos.DOScale(0, 0.8f).SetEase(Ease.OutElastic).From(0f);
+    }
+
+    private void PlayerEnter()
+    {
+        textPos.DOScale(1f, 0.8f).SetEase(Ease.OutElastic).From(0f);
     }
 }
