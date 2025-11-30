@@ -122,7 +122,7 @@ MonoBehaviour:
   speed: 21.9
   bodyRotateSpeed: 360
   dashingTime: 0.05
-  dashSpeed: 116.2
+  dashSpeed: 160
   dashCurve:
     serializedVersion: 2
     m_Curve:
@@ -166,7 +166,8 @@ MonoBehaviour:
   attackRange: 11.3
   aprochRange: 3.63
   moveingToTargetTime: 0.3
-  damage: 100
+  damage: 30
+  impactForce: 20
   anim: {fileID: 1435859046343412085}
   misAttackSound: {fileID: 8300000, guid: b6c2b6c5ec67d1a468fb5cf3e3afa30f, type: 3}
   attackSound: {fileID: 8300000, guid: 6a26b95ebda037348bd4f330b24dd9ff, type: 3}
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f360f0252a4a7b489b62eb95ee58dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zipSpeed: 8
+  zipSpeed: 35
   isZiping: 0
   zipingPoint: {fileID: 7617006930618205240}
   anim: {fileID: 1435859046343412085}
@@ -201,7 +202,11 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   healthBar: {fileID: 0}
+  reancarnationDelay: 0
+  rebeatNumberToAlive: 0
   getHit: {fileID: 0}
+  tackMachine: {fileID: 0}
+  tip: {fileID: 0}
 --- !u!1 &453082947268758259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,5 +1164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMoving: 0
   isZiping: 0
+  movement: {fileID: 0}
   maxAttack: 2
   attackcComboColdown: 1

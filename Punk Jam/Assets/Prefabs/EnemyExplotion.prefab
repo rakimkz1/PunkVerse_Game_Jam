@@ -4129,7 +4129,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.36
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5005,8 +5005,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 12
-      minScalar: 8
+      scalar: 16
+      minScalar: 12
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5057,9 +5057,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 5
-      minScalar: 5
+      minMaxState: 3
+      scalar: 18
+      minScalar: 12
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5176,8 +5176,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 30
-      minScalar: 20
+      scalar: 50
+      minScalar: 30
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9824,7 +9824,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 663.4471, y: 184.88446, z: -93.11457}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7592357169400032621}
   - {fileID: 1706051334591880747}
@@ -10085,8 +10085,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 350
-      minScalar: 60
+      scalar: 500
+      minScalar: 90
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14982,8 +14982,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 400
-      minScalar: 80
+      scalar: 620
+      minScalar: 150
       maxCurve:
         serializedVersion: 2
         m_Curve:
