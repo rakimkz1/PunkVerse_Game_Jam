@@ -10,7 +10,7 @@ public class TactMachine : MonoBehaviour
 
     public event Action onTactBeat;
 
-    [SerializeField] private AudioClip tactClip;
+    [SerializeField] private AudioClip loseBeat;
 
     private float _nowTact = 0f;
     public bool isBeatable = true;
@@ -22,7 +22,6 @@ public class TactMachine : MonoBehaviour
         if(_nowTact > tact)
         {
             onTactBeat?.Invoke();
-            AudioManager.instance.PlayAudioOneShot(tactClip, 1f);
             _nowTact = _nowTact - tact;
         }
     }
@@ -39,6 +38,7 @@ public class TactMachine : MonoBehaviour
     private async Task FailColdown()
     {
         isBeatable = false;
+        AudioManager.instance.PlayAudioOneShot(loseBeat, 2f);
         await Task.Delay((int)(failColdown * 1000));
         isBeatable = true;
     }

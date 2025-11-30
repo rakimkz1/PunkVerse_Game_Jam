@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91085bc6fc433642a0615cad32c4bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueAsset: {fileID: 11400000, guid: 83a7a82509fd1ab428ea210046cb08c7, type: 2}
+  dialogueAsset: {fileID: 11400000, guid: c70b80910234c9148b6551c903268f37, type: 2}
   sprites:
   - {fileID: 21300000, guid: 4f4ecfb675ba67b44b0ad7dfc6d5bd41, type: 3}
   - {fileID: 21300000, guid: a1f4682d532ca49418f7120f29cc1452, type: 3}
@@ -389,6 +389,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 832453b530dc4a24cb3b2790d6d77a86, type: 3}
   - {fileID: 21300000, guid: 5acd15c9d9863ff44a45d7008e3746a4, type: 3}
   - {fileID: 21300000, guid: bfea212ed1ec6a344830c812725809fb, type: 3}
+  - {fileID: 21300000, guid: 2ebbe1557e988d645a1cc4ef558da343, type: 3}
+  - {fileID: 21300000, guid: 252e6061943c3c64ba733731b8f3a671, type: 3}
+  - {fileID: 21300000, guid: b465843a90df7c948993d6151716f914, type: 3}
   panel: {fileID: 7651846205118211491}
   speakerText: {fileID: 9039789645649752532}
   messageText: {fileID: 7319397204371609668}
@@ -419,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8460303194630284222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -775,6 +778,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7620774244784497942, guid: e31645a321d893c4d81fab11889c8b81, type: 3}
+      propertyPath: m_fontSize
+      value: 64.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620774244784497942, guid: e31645a321d893c4d81fab11889c8b81, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 375750d8233e29b42aa22c4dd122a510, type: 2}
+    - target: {fileID: 7620774244784497942, guid: e31645a321d893c4d81fab11889c8b81, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6570506811283850090, guid: 375750d8233e29b42aa22c4dd122a510, type: 2}
+    - target: {fileID: 8152111258635127942, guid: e31645a321d893c4d81fab11889c8b81, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 375750d8233e29b42aa22c4dd122a510, type: 2}
+    - target: {fileID: 8152111258635127942, guid: e31645a321d893c4d81fab11889c8b81, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6570506811283850090, guid: 375750d8233e29b42aa22c4dd122a510, type: 2}
     - target: {fileID: 9115695283389051233, guid: e31645a321d893c4d81fab11889c8b81, type: 3}
       propertyPath: m_Name
       value: DialoguePanel

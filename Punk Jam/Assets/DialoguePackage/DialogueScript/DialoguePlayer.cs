@@ -103,7 +103,17 @@ namespace DialogueSystem
 						avatar.sprite = sprites[9];
 						images[0].SetActive(true);
 					}
-					else if (node.second <= i)
+                    else if (node.Id == "tutorial4")
+                    {
+                        avatar.sprite = sprites[7];
+                        images[0].SetActive(true);
+                    }
+                    else if (node.Id == "tutorial5")
+                    {
+                        avatar.sprite = sprites[7];
+                        images[0].SetActive(true);
+                    }
+                    else if (node.second <= i)
 					{
 						if (node.Id == "3")
 						{
