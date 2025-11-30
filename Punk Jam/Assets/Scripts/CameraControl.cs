@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
     public float mouseSentivity;
+    public float settingsAumount;
     public Vector3 diractionX;
     public Vector3 diractionY;
     public PlayerMovement player;
@@ -13,6 +15,8 @@ public class CameraControl : MonoBehaviour
 
     private void Start()
     {
+        settingsAumount = PlayerPrefs.GetFloat("MouseSensitivity");
+        Settings.instance.OnMusicVolumeChanged += SetMouseSence;
         player.OnStartMoving += () =>
         {
             isLookable = true;
@@ -23,6 +27,11 @@ public class CameraControl : MonoBehaviour
         };
     }
 
+    private void SetMouseSence(float obj)
+    {
+        settingsAumount = obj;
+    }
+
     private void Update()
     {
         if (!isLookable)
@@ -30,7 +39,7 @@ public class CameraControl : MonoBehaviour
         float x = Input.GetAxis("Mouse X");
         float y = Input.GetAxis("Mouse Y");
 
-        cameraRotation += new Vector3(-y * 0.8f, x, 0f) * mouseSentivity * Time.deltaTime;
+        cameraRotation += new Vector3(-y * 0.8f, x, 0f) * mouseSentivity * settingsAumount * Time.deltaTime;
         cameraRotation = LimitCamera(cameraRotation);
 
         diractionX = new Vector3(Mathf.Sin(cameraRotation.y * Mathf.Deg2Rad), 0f, Mathf.Cos(cameraRotation.y * Mathf.Deg2Rad));

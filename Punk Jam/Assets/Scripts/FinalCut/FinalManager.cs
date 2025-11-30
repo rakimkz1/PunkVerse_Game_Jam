@@ -9,6 +9,7 @@ public class FinalManager : MonoBehaviour
 	[SerializeField] private Transform waipaoint;
 	[SerializeField] private Animator animator;
 	[SerializeField] private PlayerMovement pm;
+	[SerializeField] private GameObject repairCutScene;
 
 	private Transform player;
 
@@ -26,8 +27,9 @@ public class FinalManager : MonoBehaviour
 	public void Repair()
 	{
 		choices.SetActive(false);
-
-	}
+		repairCutScene.SetActive(true);
+        StartCoroutine(GOMENU());
+    }
 
 	public void Death()
 	{

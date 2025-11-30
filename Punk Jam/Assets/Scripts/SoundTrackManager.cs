@@ -8,11 +8,14 @@ public class SoundTrackManager : MonoBehaviour
     public static SoundTrackManager Instance;
     public int offset;
     private AudioSource soundTrack;
+    private float audioAmount;
 
     private void Start()
     {
         Instance = this;
         soundTrack = GetComponent<AudioSource>();
+        soundTrack.volume = audioAmount;
+        Settings.instance.OnMusicVolumeChanged += SetMusicVolume;
         StartCoroutine(PlaySoundTracck());
     }
 
@@ -26,8 +29,8 @@ public class SoundTrackManager : MonoBehaviour
         StartCoroutine(PlaySoundTracck());
     }
 
-    public void SetVolume(float volume)
+    public void SetMusicVolume(float volume)
     {
-        soundTrack.volume = volume;
+        audioAmount = volume;
     }
 }
