@@ -8,6 +8,8 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     public float tact;
     public float Damage;
     public float movingTime;
+    public float health;
+    public float maxHealth;
 
     public AnimationCurve movingCurve;
 
@@ -15,6 +17,7 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     public float rotateSpeed;
     public float attackRange;
     public float prepairingRange;
+    [SerializeField] private GameObject dieParticales;
     private int currentWay;
     private int currentDiraction = 1;
     private bool isPrepered;
@@ -22,8 +25,13 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     private Animator animator;
     public void Attacked(float damage)
     {
-
+        health -= damage;
+        if (health <= 0f)
+        {
+            Die();
+        }
     }
+
 
     private void Start()
     {
@@ -96,6 +104,11 @@ public class WaryEnemy : MonoBehaviour, IAttackTarget
     {
         Quaternion rot = Quaternion.LookRotation(wayPoints[currentWay + currentDiraction].position - wayPoints[currentWay].position, wayPoints[currentWay + currentDiraction].up);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotateSpeed);
+    }
+    private void Die()
+    {
+        Instantiate(dieParticales, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

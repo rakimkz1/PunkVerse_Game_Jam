@@ -71,6 +71,8 @@ MonoBehaviour:
   tact: 1
   Damage: 20
   movingTime: 0.32
+  health: 100
+  maxHealth: 100
   movingCurve:
     serializedVersion: 2
     m_Curve:
@@ -111,9 +113,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  playerPosition: {fileID: 0}
   rotateSpeed: 0.05
   attackRange: 3.5
+  prepairingRange: 8
+  dieParticales: {fileID: 7900768914184551993, guid: d1064524381e9834faf94fa628c7d875, type: 3}
 --- !u!136 &3803084273812017127
 CapsuleCollider:
   m_ObjectHideFlags: 0

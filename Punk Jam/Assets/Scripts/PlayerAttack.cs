@@ -7,12 +7,14 @@ public class PlayerAttack : MonoBehaviour
     public float aprochRange;
     public float moveingToTargetTime;
     public float damage;
+    public float impactForce;
 
     [SerializeField] private PlayerAnimation anim;
     [SerializeField] private AudioClip misAttackSound;
     [SerializeField] private AudioClip attackSound;
     private TactMachine _tactMachine;
     private PlayerZip playerZip;
+    private Rigidbody _rb;
     private PlayerMovement playerMovement;
     private bool isAttackable = true;
 
@@ -21,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
         _tactMachine = GetComponent<TactMachine>();
         playerZip = GetComponent<PlayerZip>();
         playerMovement = GetComponent<PlayerMovement>();
+        _rb = GetComponent<Rigidbody>();
         playerMovement.OnStartMoving += () =>
         {
             isAttackable = true;
@@ -61,13 +64,16 @@ public class PlayerAttack : MonoBehaviour
     {
         float time = 0f;
         Vector3 targetPos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-        Vector3 moveToPos = targetPos - (targetPos - transform.position).normalized * aprochRange; 
+        Vector3 moveToPos = targetPos - (targetPos - transform.position).normalized * aprochRange;
+        playerMovement.TargetRotate(targetPos, 0.6f);
         while (time < moveingToTargetTime)
         {
             await Task.Yield();
             time += Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, moveToPos, time / moveingToTargetTime);
         }
+
+        _rb.velocity += (target.transform.position).normalized * impactForce;
 
         target.GetComponent<IAttackTarget>().Attacked(damage);
     }

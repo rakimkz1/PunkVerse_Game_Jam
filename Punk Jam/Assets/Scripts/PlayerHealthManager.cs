@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +10,14 @@ public class PlayerHealthManager : MonoBehaviour
     public float health;
     public float maxHealth;
     public Image healthBar;
+    public float reancarnationDelay;
+    public int rebeatNumberToAlive;
     [SerializeField] private AudioClip getHit;
+    [SerializeField] protected TactMachine tackMachine;
+    [SerializeField] private TextMeshProUGUI tip;
     private PlayerMovement movement;
+    private int _nowBeatNumber;
+    private bool _isBeatable;
 
     private void Start()
     {
@@ -32,13 +40,32 @@ public class PlayerHealthManager : MonoBehaviour
     private void Dead()
     {
         movement.OnStopMoving?.Invoke();
-        Reaincarnation();
+        _nowBeatNumber = 0;
+        StartReancarnationGame();
     }
 
-    private async Task Reaincarnation()
+    private void Update()
     {
-        await Task.Delay((int)(1000 * 3f));
-        health = maxHealth;
+        if(_isBeatable && tackMachine.IsBeatTact() && Input.GetKeyDown(KeyCode.Space))
+        {
+            _nowBeatNumber += 1;
+            if(_nowBeatNumber == rebeatNumberToAlive)
+            {
+                Reancornate();
+            }
+        }
+    }
+
+    private async Task Reancornate()
+    {
+        _isBeatable = false;
+        await Task.Delay(2000);
         movement.OnStartMoving?.Invoke();
+    }
+
+    private async Task StartReancarnationGame()
+    {
+        await Task.Delay((int)(reancarnationDelay * 1000f));
+        _isBeatable = true;
     }
 }
