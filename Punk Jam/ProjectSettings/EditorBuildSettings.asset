@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene 23.unity
     guid: 3250b025c17d69541997f91098fb9397
+  - enabled: 1
+    path: Assets/Scenes/Prology.unity
+    guid: c05eac1827ab3e5468bad08ee9cc5602
   m_configObjects: {}
